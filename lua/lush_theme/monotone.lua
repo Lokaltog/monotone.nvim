@@ -26,7 +26,7 @@
 -- Lua configuration example:
 --
 --   vim.g.monotone_h = 85
---   vim.g.monotone_s = 0
+--   vim.g.monotone_s = 30
 --   vim.g.monotone_l = 50
 --   vim.g.monotone_contrast = 100
 --   vim.g.monotone_true_monotone = true
@@ -173,7 +173,7 @@ return lush(function()
     Repeat         { }, --   for, do, while, etc.
     Label          { }, --    case, default, etc.
     Operator       { }, -- "sizeof", "+", "*", etc.
-    Keyword        { gui = 'italic' }, --  any other keyword
+    Keyword        { }, --  any other keyword
     Exception      { }, --  try, catch, throw
 
     PreProc        { }, -- (preferred) generic Preprocessor
@@ -206,10 +206,10 @@ return lush(function()
     -- LspReferenceRead                     { }, -- used for highlighting "read" references
     -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
-    LspDiagnosticsDefaultError           { fg = red }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultWarning         { fg = yellow }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultInformation     { fg = blue }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultHint            { fg = green }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultError           { fg = red, bg = shade(red, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultWarning         { fg = yellow, bg = shade(yellow, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultInformation     { fg = blue, bg = shade(blue, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultHint            { fg = green, bg = shade(green, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
     -- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
     -- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
