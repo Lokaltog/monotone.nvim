@@ -206,20 +206,20 @@ return lush(function()
     -- LspReferenceRead                     { }, -- used for highlighting "read" references
     -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
-    LspDiagnosticsDefaultError           { fg = red, bg = shade(red, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultWarning         { fg = yellow, bg = shade(yellow, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultInformation     { fg = blue, bg = shade(blue, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultHint            { fg = green, bg = shade(green, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    DiagnosticError           { fg = red, bg = shade(red, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    DiagnosticWarn            { fg = yellow, bg = shade(yellow, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    DiagnosticInfo            { fg = blue, bg = shade(blue, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    DiagnosticHint            { fg = green, bg = shade(green, -78) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
     -- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
     -- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
     -- LspDiagnosticsVirtualTextInformation { }, -- Used for "Information" diagnostic virtual text
     -- LspDiagnosticsVirtualTextHint        { }, -- Used for "Hint" diagnostic virtual text
 
-    LspDiagnosticsUnderlineError         { SyntaxError }, -- Used to underline "Error" diagnostics
-    LspDiagnosticsUnderlineWarning       { SyntaxWarning }, -- Used to underline "Warning" diagnostics
-    LspDiagnosticsUnderlineInformation   { SyntaxInfo }, -- Used to underline "Information" diagnostics
-    LspDiagnosticsUnderlineHint          { SyntaxHint }, -- Used to underline "Hint" diagnostics
+    DiagnosticUnderlineError         { SyntaxError }, -- Used to underline "Error" diagnostics
+    DiagnosticUnderlineWarn          { SyntaxWarning }, -- Used to underline "Warning" diagnostics
+    DiagnosticUnderlineInfo          { SyntaxInfo }, -- Used to underline "Information" diagnostics
+    DiagnosticUnderlineHint          { SyntaxHint }, -- Used to underline "Hint" diagnostics
 
     -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingWarning        { }, -- Used to color "Warning" diagnostic messages in diagnostics float
