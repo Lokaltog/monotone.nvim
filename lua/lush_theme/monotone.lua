@@ -207,11 +207,6 @@ return lush(function()
 		DiagnosticInfo({ fg = blue, bg = shade(blue, -78) }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		DiagnosticHint({ fg = green, bg = shade(green, -78) }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
-		DiagnosticLineError({ bg = shade(red, -78) }),
-		DiagnosticLineWarn({ bg = shade(yellow, -78) }),
-		DiagnosticLineInfo({ bg = shade(blue, -78) }),
-		DiagnosticLineHint({ bg = shade(green, -78) }),
-
 		-- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
 		-- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
 		-- LspDiagnosticsVirtualTextInformation { }, -- Used for "Information" diagnostic virtual text
