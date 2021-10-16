@@ -55,18 +55,18 @@ end
 local shade = function(color, offset)
 	return color[offset_fn](offset * opt.contrast)
 end
-local s = { 50, 20, 10, 0, -10, -25, -45, -60, inv = -100, normal = 100 }
+local s = { 50, 20, 10, 0, -10, -25, -45, -60, -88, inv = -100, normal = 100 }
 for k, v in pairs(s) do
 	s[k] = shade(opt.color, v)
 end
 
 -- Highlight colors
-local red = shade(hsl(2, 100, s.normal.l), -35)
-local yellow = shade(hsl(32, 100, s.normal.l), -35)
-local blue = shade(hsl(205, 85, s.normal.l), -35)
-local green = shade(hsl(90, 40, s.normal.l), -35)
-local eob = shade(hsl(240, 30, s.normal.l), -45)
-local nt = shade(hsl(330, 30, s.normal.l), -50)
+local red = shade(hsl(2, 90, s.normal.l), -35)
+local yellow = shade(hsl(32, 70, s.normal.l), -35)
+local blue = shade(hsl(205, 55, s.normal.l), -35)
+local green = shade(hsl(90, 35, s.normal.l), -35)
+local eob = shade(hsl(240, 35, s.normal.l), -45)
+local nt = shade(hsl(330, 35, s.normal.l), -50)
 
 if opt.true_monotone then
 	-- Disable all colors
@@ -111,7 +111,7 @@ return lush(function()
 		-- TermCursor   { }, -- cursor in a focused terminal
 		-- TermCursorNC { }, -- cursor in an unfocused terminal
 		Error({ fg = hl1, gui = "bold" }), -- (preferred) any erroneous construct
-		ErrorMsg({ Error }), -- error messages on the command line
+		ErrorMsg({ fg = s.inv, bg = hl1, gui = "bold" }), -- error messages on the command line
 		VertSplit({ fg = s[1] }), -- the column separating vertically split windows
 		Folded({ fg = s.normal, bg = s[5], gui = "italic" }), -- line used for closed folds
 		FoldColumn({}), -- 'foldcolumn'
@@ -120,7 +120,7 @@ return lush(function()
 		Substitute({}), -- |:substitute| replacement text highlighting
 		LineNr({ fg = s[1] }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		CursorLineNr({ fg = s[1] }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-		MatchParen({ fg = s.inv, bg = hl2 }), -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+		MatchParen({ fg = red, bg = shade(red, -78), gui = "bold,italic" }), -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ParenMatch({ MatchParen }),
 		ModeMsg({}), -- 'showmode' message (e.g., "-- INSERT -- ")
 		MsgArea({}), -- Area for messages and cmdline
@@ -202,6 +202,9 @@ return lush(function()
 		-- LspReferenceRead                     { }, -- used for highlighting "read" references
 		-- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
+		IndentBlanklineChar({ fg = s[8] }),
+		IndentBlanklineContextChar({ fg = nt }),
+
 		DiagnosticError({ fg = red, bg = shade(red, -78) }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		DiagnosticWarn({ fg = yellow, bg = shade(yellow, -78) }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		DiagnosticInfo({ fg = blue, bg = shade(blue, -78) }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
@@ -222,10 +225,10 @@ return lush(function()
 		-- LspDiagnosticsFloatingInformation    { }, -- Used to color "Information" diagnostic messages in diagnostics float
 		-- LspDiagnosticsFloatingHint           { }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
-		DiagnosticSignError({ fg = red, bg = shade(red, -78) }), -- Used for "Error" signs in sign column
-		DiagnosticSignWarning({ fg = yellow, bg = shade(yellow, -78) }), -- Used for "Warning" signs in sign column
-		DiagnosticSignInformation({ fg = blue, bg = shade(blue, -78) }), -- Used for "Information" signs in sign column
-		DiagnosticSignHint({ fg = green, bg = shade(green, -78) }), -- Used for "Hint" signs in sign column
+		DiagnosticSignError({ fg = red, bg = shade(red, -84) }), -- Used for "Error" signs in sign column
+		DiagnosticSignWarning({ fg = yellow, bg = shade(yellow, -84) }), -- Used for "Warning" signs in sign column
+		DiagnosticSignInformation({ fg = blue, bg = shade(blue, -84) }), -- Used for "Information" signs in sign column
+		DiagnosticSignHint({ fg = green, bg = shade(green, -84) }), -- Used for "Hint" signs in sign column
 
 		-- TSAnnotation         { };    -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
 		-- TSAttribute          { };    -- (unstable) TODO: docs
