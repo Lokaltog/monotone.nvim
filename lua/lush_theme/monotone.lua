@@ -55,7 +55,7 @@ end
 local shade = function(color, offset)
 	return color[offset_fn](offset * opt.contrast)
 end
-local s = { 50, 20, 10, 0, -10, -25, -45, -60, -88, inv = -100, normal = 100 }
+local s = { 50, 20, 10, 0, -10, -25, -45, -60, -70, inv = -100, normal = 100 }
 for k, v in pairs(s) do
 	s[k] = shade(opt.color, v)
 end
@@ -113,7 +113,7 @@ return lush(function()
 		Error({ fg = hl1, gui = "bold" }), -- (preferred) any erroneous construct
 		ErrorMsg({ fg = s.inv, bg = hl1, gui = "bold" }), -- error messages on the command line
 		VertSplit({ fg = s[1] }), -- the column separating vertically split windows
-		Folded({ fg = s.normal, bg = s[5], gui = "italic" }), -- line used for closed folds
+		Folded({ fg = s[3], bg = s[9], gui = "italic" }), -- line used for closed folds
 		FoldColumn({}), -- 'foldcolumn'
 		SignColumn({}), -- column where |signs| are displayed
 		IncSearch({ fg = s.inv, bg = hl3 }), -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
@@ -127,7 +127,7 @@ return lush(function()
 		MsgSeparator({}), -- Separator for scrolled messages, `msgsep` flag of 'display'
 		MoreMsg({ fg = hl3, gui = "bold" }), -- |more-prompt|
 		NonText({ fg = nt }), -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		NormalFloat({}), -- Normal text in floating windows.
+		NormalFloat({ bg = s[9], fg = s[2] }), -- Normal text in floating windows.
 		NormalNC({}), -- Normal text in non-current windows
 		Pmenu({ fg = s[1], bg = s[8] }), -- Popup menu: Normal item.
 		PmenuSel({ fg = s.inv, bg = s.normal }), -- Popup menu: selected item.
@@ -141,8 +141,8 @@ return lush(function()
 		SpellCap({ SyntaxInfo }), -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		SpellLocal({ SyntaxHint }), -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		SpellRare({ SyntaxWarning }), -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-		StatusLine({ fg = s[1], gui = "underline" }), -- status line of current window
-		StatusLineNC({ fg = s[3], gui = "underline" }), -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLine({ fg = s[1], bg = s[8] }), -- status line of current window
+		StatusLineNC({ fg = s[3], bg = s[9] }), -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		TabLine({ fg = s[3] }), -- tab pages line, not active tab page label
 		TabLineFill({ fg = s[3] }), -- tab pages line, where there are no labels
 		TabLineSel({ fg = s[1], gui = "bold" }), -- tab pages line, active tab page label
@@ -154,7 +154,7 @@ return lush(function()
 		Whitespace({ fg = s[7] }), -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu({ fg = s[6], fg = s.normal }), -- current match in 'wildmenu' completion
 
-		Constant({}), -- (preferred) any constant
+		Constant({ gui = "underline", sp = "fg" }), -- (preferred) any constant
 		String({ fg = s[2] }), --   a string constant: "this is a string"
 		Character({}), --  a character constant: 'c', '\n'
 		Number({}), --   a number constant: 234, 0xff
@@ -237,7 +237,7 @@ return lush(function()
 		-- TSComment            { };    -- For comment blocks.
 		-- TSConstructor        { };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
 		-- TSConditional        { };    -- For keywords related to conditionnals.
-		TSConstant({ gui = "underline" }), -- For constants
+		TSConstant({ gui = "underline", sp = "fg" }), -- For constants
 		-- TSConstBuiltin       { };    -- For constant that are built in the language: `nil` in Lua.
 		-- TSConstMacro         { };    -- For constants that are defined by macros: `NULL` in C.
 		-- TSError              { };    -- For syntax/parser errors.
