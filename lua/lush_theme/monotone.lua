@@ -198,9 +198,9 @@ return lush(function()
 
 		Todo({ fg = hl2, gui = "bold,italic" }), -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-		-- LspReferenceText                     { }, -- used for highlighting "text" references
-		-- LspReferenceRead                     { }, -- used for highlighting "read" references
-		-- LspReferenceWrite                    { }, -- used for highlighting "write" references
+		LspReferenceText({ gui = "underline", sp = blue }), -- used for highlighting "text" references
+		LspReferenceRead({ gui = "underline", sp = s.normal }), -- used for highlighting "read" references
+		LspReferenceWrite({ gui = "underline", sp = green }), -- used for highlighting "write" references
 
 		IndentBlanklineChar({ fg = s[8] }),
 		IndentBlanklineContextChar({ fg = nt }),
@@ -281,5 +281,8 @@ return lush(function()
 		-- TSTitle              { };    -- Text that is part of a title.
 		-- TSLiteral            { };    -- Literal text.
 		-- TSURI                { };    -- Any URI like a link or email.
+
+		IndentBlankLineContextStart({ gui = "underline", sp = nt }),
+		TreesitterContext({ fg = s[3], gui = "italic" }),
 	}
 end)
